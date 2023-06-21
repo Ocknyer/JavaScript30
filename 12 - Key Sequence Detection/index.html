@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Key Detection</title>
+    <script type="text/javascript" src="./cornify.js"></script>
+    <link rel="icon" href="https://fav.farm/🔥" />
+  </head>
+  <body>
+    <script>
+      const pressed = [];
+      const secretCode = 'lilit';
+
+      window.addEventListener('keyup', e => {
+        console.log(e.key);
+
+        pressed.push(e.key);
+        console.log(
+          pressed.length,
+          secretCode.length,
+          // 절대값이 배열의 길이보다 큰 경우 0으로 세팅
+          -secretCode.length - 3,
+          pressed.length - secretCode.length,
+        );
+        // deleteCount가 0이하일 경우는 어떤 요소도 제거되지 않음
+        pressed.splice(0, pressed.length - secretCode.length);
+        if (pressed.join('') === secretCode) {
+          console.log('DING DING!');
+          cornify_add();
+        }
+
+        console.log(pressed);
+      });
+    </script>
+  </body>
+</html>
